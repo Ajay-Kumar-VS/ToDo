@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <div class="main">
+      <div class="frame">
+        <div id="AddTodo"><h1>AddTodo</div>
+        <div class="AddTodo">
+            <input id="inputBox" placeholder="enter ToDo" />
+            <button id="addButton">Add</button>
+            
+          </div>
+          <div>
+            <ul id="list"></ul>
+          </div>
+      </div>
+    </div>
+
+<!-- ---------------------------------------script------------------------------------------- -->
+    <script>
+       
+        function addTodo(){
+            let list=document.getElementById('list')
+            let listItem=document.createElement("li")
+            listItem.setAttribute('class','listitem')
+            let div=document.createElement('div')
+            let deleteButton=document.createElement('button')
+            let box=document.createElement('input')
+            box.type='checkbox'
+            box.setAttribute("class","checkbox")
+            let todoData=document.getElementById('inputBox').value
+            div.innerText=todoData
+            div.setAttribute("class","singleTodo")
+            deleteButton.setAttribute("class","deleteButton")
+            // console.log(div)
+            
+        //    console.log(box)
+            div.appendChild(box)
+            div.appendChild(deleteButton)
+            listItem.appendChild(div)
+            // console.log(listItem)
+            list.appendChild(listItem)
+            
+            deleteButton.addEventListener("click",(e)=>{
+                    e.target.parentNode.parentNode.remove()
+            })
+            deleteButton.innerText="Delete"
+            
+
+        }
+        let button=document.getElementById('addButton')
+        
+        button.addEventListener('click',addTodo)
+
+    </script>
+  </body>
+</html>
